@@ -18,5 +18,7 @@ def generate_model(cfdist, word, num=15):
 bigrams = nltk.bigrams(mybook)
 cfd = nltk.ConditionalFreqDist(bigrams)
 
-print(cfd['living'])
-print(generate_model(cfd, 'living'))
+## print(cfd['Tharoor'])
+## print(generate_model(cfd, 'Tharoor'))
+
+mybook.similar("people")
