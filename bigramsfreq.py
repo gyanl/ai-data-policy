@@ -1,21 +1,33 @@
-f = open('text.txt', 'r')
+from collections import Counter
 
-raw = f.read()
-
-text = str(raw).split()
+## For n most common bigrams
+n = 5
 
 result = []
-freq = []
+i = 0
+j = 0
+k = 0
 
-i=1
+f = open('text.txt', 'r')
+raw = f.read()
+text = str(raw).split()
+
 print("The bigrams are: ")
-while i < len(text):
-  if str(text[i-1] + "|" + text[i]) in result:
-    freq[i] = freq[i] + 1
-  else:
-    result.append(str(text[i-1] + "|" + text[i]))
-    freq[i] = 1
-  i = i+1
+while i < len(text)-1:
+    result.append(text[i] + "|" + text[i+1])
+    i = i+1
 
-print(result)
-print(frequency)
+sortedresult = sorted(result, key = result.count, reverse = True)
+
+result2 = []
+
+while j < len(sortedresult):
+    if sortedresult[j] in result2:
+        j = j + 1
+    else:
+        print(sortedresult[j] , sortedresult.count(sortedresult[j]))
+        result2.append(sortedresult[j])
+        k = k + 1
+        j = j + 1
+    if (k >= n):
+        break
